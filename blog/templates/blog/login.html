@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Django博客注册</title>
+</head>
+<body>
+	<h1>登录页面：</h1>
+	<form method="post">
+    	{% csrf_token %}
+    	{{ logForm.as_ul }}
+    <input type="submit" value = "ok" />
+	</form>
+	<br>
+	{% if msg %}
+		<p>{{msg}}</p>
+		<br>
+	{% endif %}
+	<a href="{% url 'regist' %}">注册</a>
+</body>
+</html>

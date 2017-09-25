@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Django博客</title>
+</head>
+<body>
+	<h1>新的文章：</h1>
+	<form method="post">
+    	{% csrf_token %}
+    	{{ articleForm.as_ul }}
+    <input type="submit" value = "ok" />
+	</form>
+	<br>
+	<a href="{% url 'index' %}">取消</a>
+	<a href="{% url 'logout' %}">退出</a>
+</body>
+</html>

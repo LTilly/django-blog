@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Django博客注册</title>
+</head>
+<body>
+	{% if msg == 'ok' %}
+		<h3>注册成功！！！</h3>
+		<p>Welcome,{{name}}!</p>
+		<p>欢饮来到Django博客！</p>
+		<a href="{% url 'login' %}">登录</a>
+	{% else %}
+		<h3>注册失败！！！</h3>
+		<p>{{msg}}</p>
+		<a href="{% url 'regist' %}">重新注册</a>
+	{% endif %}
+</body>
+</html>

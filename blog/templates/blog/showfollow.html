@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{ name }}</title>
+</head>
+<body>
+	<h1>
+		{{ name }}
+		{% if boo %}
+			的关注列表
+		{% else %}
+			的关注者
+		{% endif %}
+	</h1>
+	<br>
+	<ul>
+		{% for fol in follows %}
+			<li><a href="{% url 'user' fol.pk %}">{{ fol.name }}</a></li>
+		{% endfor %}
+	</ul>
+	<div class="pagination">
+    	<span class="step-links">
+	        {% if articles.has_previous %}
+	            <a href="?page={{ follows.previous_page_number }}">previous</a>
+	        {% endif %}
+	        <span class="current">
+	            Page {{ articles.number }} of {{ follows.paginator.num_pages }}.
+	        </span>
+	        {% if articles.has_next %}
+	            <a href="?page={{ follows.next_page_number }}">next</a>
+	        {% endif %}
+	    </span>
+	</div>
+</body>
+</html>

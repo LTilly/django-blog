@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Django博客</title>
+</head>
+<body>
+	<h2>TimeLine</h2>
+	<dl>
+		{% for art in articles %}
+			<dt><a href="{% url 'article' art.pk %}">{{ art.title }}</a></dt>
+			<dd><a href="{% url 'user' art.author.pk %}">{{ art.author.name }}</a>--{{ art.time }}</dd>
+		{% endfor %}
+	</dl>
+	<div class="pagination">
+    	<span class="step-links">
+	        {% if articles.has_previous %}
+	            <a href="?page={{ articles.previous_page_number }}">previous</a>
+	        {% endif %}
+	        <span class="current">
+	            Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+	        </span>
+	        {% if articles.has_next %}
+	            <a href="?page={{ articles.next_page_number }}">next</a>
+	        {% endif %}
+	    </span>
+	</div>
+	<br>
+	<a href="{% url 'index' %}">首页</a>
+	<a href="{% url 'logout' %}">退出</a>
+</body>
+</html>
